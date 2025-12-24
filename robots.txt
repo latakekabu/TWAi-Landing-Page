@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://latakekabu.github.io/TWAi-Landing-Page/sitemap.xml
+Host: latakekabu.github.io
