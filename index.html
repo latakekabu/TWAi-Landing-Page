@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональная сказка для вашего ребёнка | TWAi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #2196F3;
+            --color-primary-dark: #1976D2;
+            --color-accent: #FF6B9D;
+            --color-text: #2C3E50;
+            --color-text-light: #7F8C8D;
+            --color-bg: #F8F9FA;
+            --color-white: #FFFFFF;
+            --color-success: #4CAF50;
+            --color-border: #E0E0E0;
+            --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color var(--transition);
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .cta-button {
+            background: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--color-text);
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 18px;
+            color: var(--color-text-light);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-quote {
+            background: #F0F7FF;
+            border-left: 4px solid var(--color-primary);
+            padding: 24px;
+            margin: 40px 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--color-text);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px;
+        }
+
+        .hero-quote strong {
+            font-style: normal;
+            color: var(--color-primary);
+        }
+
+        /* NAVIGATION ANCHORS */
+        .nav-anchors {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-anchor {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: var(--color-white);
+            border: 2px solid var(--color-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--color-primary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+
+        .nav-anchor:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--color-text);
+        }
+
+        section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0 12px 0;
+            color: var(--color-text);
+        }
+
+        section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            color: var(--color-text-light);
+        }
+
+        /* SECTION: ЧТО ЭТО */
+        .section-what {
+            background: var(--color-white);
+        }
+
+        .what-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .what-text p {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .testimonial {
+            background: #FFF9E6;
+            padding: 16px;
+            border-radius: 6px;
+            border-left: 4px solid var(--color-accent);
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        .testimonial strong {
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--color-text-light);
+        }
+
+        @media (max-width: 768px) {
+            .what-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SECTION: ДЛЯ КОГО */
+        .section-who {
+            background: var(--color-bg);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .case-card {
+            background: var(--color-white);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            transition: all var(--transition);
+        }
+
+        .case-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .case-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .case-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        .case-card p {
+            font-size: 14px;
+            color: var(--color-text-light);
+        }
+
+        @media (max-width: 768px) {
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SECTION: КАК ЗАКАЗАТЬ */
+        .section-how {
+            background: var(--color-white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+            transition: all var(--transition);
+        }
+
+        .pricing-card:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .pricing-desc {
+            font-size: 14px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .pricing-features {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            list-style: none;
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .pricing-card:nth-child(2) .btn-primary {
+            color: #f5576c;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* PROCESS */
+        .process {
+            margin-top: 40px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 16px;
+        }
+
+        .step h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+
+        .step p {
+            font-size: 13px;
+            color: var(--color-text-light);
+        }
+
+        @media (max-width: 768px) {
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--color-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #aaa;
+        }
+
+        .footer-section a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: color var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-links {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
+        }
+
+        .footer-links a {
+            display: inline-block;
+            margin: 0 16px;
+            font-size: 13px;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SMOOTH SCROLL */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* UTILITY */
+        .scroll-hint {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--color-text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect fill='%232196F3' width='40' height='40' rx='8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='0.35em' fill='white' font-weight='bold' font-size='18' font-family='Arial'%3ETWAI%3C/text%3E%3C/svg%3E" alt="TWAi">
+                    TWAi
+                </a>
+                <nav>
+                    <a href="#what">Что это</a>
+                    <a href="#who">Для кого</a>
+                    <a href="#how">Как заказать</a>
+                    <a href="https://t.me/twai_skazki" target="_blank" class="cta-button">Написать в ТГ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Персональная сказка<br>для вашего ребёнка</h1>
+            <p class="tagline">История, которую мы создадим специально для вашего ребёнка</p>
+            
+            <div class="hero-quote">
+                <strong>«Когда я прочитала, я плакала.»</strong><br>
+                Потому что это была моя дочка. Её страхи, её вопросы, её магия. И она изменилась за месяц.
+            </div>
+
+            <div class="nav-anchors">
+                <a href="#what" class="nav-anchor">⬇️ Что это?</a>
+                <a href="#who" class="nav-anchor">⬇️ Для кого?</a>
+                <a href="#how" class="nav-anchor">⬇️ Как заказать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: ЧТО ЭТО -->
+    <section id="what" class="section-what">
+        <div class="container">
+            <h2>Что это</h2>
+            
+            <div class="what-content">
+                <div class="what-text">
+                    <p>
+                        <strong>TaleWeaver AI</strong> — персональная терапевтическая сказка. Не книга из магазина, а история точно про вашего ребёнка — его страхи, его вопросы, его магию.
+                    </p>
+                    <p>
+<strong>Как это работает:</strong> сначала TWAi пишет вам в Telegram: «Привет! Я TWAi — ваш помощник в создании персональных терапевтических сказок. Расскажите о ребёнке, и я проведу вас через весь процесс». Вы отвечаете голосовыми на первую часть вопросов, затем на вторую, в своём ритме, без обязательных пунктов. После этого на основе ваших ответов создаётся персональная терапевтическая сказка для вашего ребёнка.
+                    </p>
+                    <p>
+                        Мамы часто плачут, когда читают. Потому что видят себя и своего ребёнка в каждой строке. И дети меняются — за месяц–два это видимо.
+                    </p>
+                    <p>
+                        <strong>Это вложение в эмоциональное развитие ребёнка на годы вперёд.</strong>
+                    </p>
+                </div>
+
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <strong>Марина, мама Анны (8 лет)</strong>
+                        <div class="testimonial-text">
+                            «Когда я получила книгу, я плакала. Анна перечитала её четыре раза на первой неделе. Она начала говорить со мной о том, о чём раньше молчала.»
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <strong>Александр, папа Миши и Саши</strong>
+                        <div class="testimonial-text">
+                            «Мальчики постоянно ссорились. После сказок они стали разговаривать иначе. За год это первый раз, когда они не ссорятся.»
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <strong>Ирина, мама Лены (6 лет)</strong>
+                        <div class="testimonial-text">
+                            «Я заказала сказку для дочки, но плакала, когда читала. Потому что это была и моя история тоже. Сказка помогла нам обеим: я снова поверила в себя, и Лена начала верить, что с её страхами можно справиться.»
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="scroll-hint">
+                💚 Подробнее о процессе: <a href="https://telegra.ph/Kak-sozdaetsya-personalnaya-terapevticheskaya-skazka-sintez-iskusstva-psihologii-i-sovremennyh-tehnologij-11-02" target="_blank" style="color: #2196F3;">Как создаётся персональная сказка</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ДЛЯ КОГО -->
+    <section id="who" class="section-who">
+        <div class="container">
+            <h2>Для кого</h2>
+            <p style="font-size: 16px; margin-bottom: 32px;">
+                Персональная сказка помогает детям (6–99 лет) с самыми разными вызовами:
+            </p>
+
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-icon">😰</div>
+                    <h4>Страхи и тревоги</h4>
+                    <p>Боится темноты, ошибок, публичных выступлений, новых ситуаций. Сказка показывает путь к смелости.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-icon">🪶</div>
+                    <h4>Неуверенность в себе</h4>
+                    <p>Не верит в свои силы, ждёт одобрения, не пробует новое. История становится её внутренним голосом поддержки.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-icon">⚔️</div>
+                    <h4>Ссоры в семье</h4>
+                    <p>Конфликты с сестрой, братом или родителями. Сказка показывает мост для примирения.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-icon">🌧️</div>
+                    <h4>Печаль и отчужденность</h4>
+                    <p>Замкнутость, депрессия, ощущение непонимания. Сказка говорит: «Ты не один, и есть выход.»</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-icon">🎭</div>
+                    <h4>Потеря смысла</h4>
+                    <p>Ребёнок не видит смысла в учёбе, в жизни, в себе. История помогает найти свой путь.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-icon">✨</div>
+                    <h4>Личностное развитие</h4>
+                    <p>Даже счастливому ребёнку история помогает глубже понять себя и мир вокруг.</p>
+                </div>
+            </div>
+
+            <p class="scroll-hint" style="margin-top: 40px;">
+                📰 Примеры результатов: <a href="https://t.me/twai_skazki/57" target="_blank" style="color: #2196F3;">Мягкие перемены, которые видны</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: КАК ЗАКАЗАТЬ -->
+    <section id="how" class="section-how">
+        <div class="container">
+            <h2>Как заказать</h2>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>📱 Электронная книга</h3>
+                    <div class="pricing-price">7.5K ₽</div>
+                    <div class="pricing-desc">EPUB формат для любого ридера</div>
+                    <ul class="pricing-features">
+                        <li>1200–5000 слов (в зависимости от возраста)</li>
+                        <li>Психологический анализ</li>
+                        <li>Рекомендации для семьи</li>
+                        <li>Доставка за 1 неделю</li>
+                    </ul>
+                    <a href="https://t.me/drozdovhumandevelopment" target="_blank" class="btn-primary">Заказать</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>📖 Печатная книга</h3>
+                    <div class="pricing-price">25K ₽</div>
+                    <div class="pricing-desc">Красивая книга в твёрдой обложке</div>
+                    <ul class="pricing-features">
+                        <li>Всё как в EPUB +</li>
+                        <li>10–12 полноцветных иллюстраций</li>
+                        <li>Твёрдая или мягкая обложка формат А5</li>
+                        <li>Печать и доставка</li>
+                        <li>Семейное сокровище на годы</li>
+                    </ul>
+                    <a href="https://t.me/drozdovhumandevelopment" target="_blank" class="btn-primary">Заказать</a>
+                </div>
+            </div>
+
+            <div class="process">
+                <h3 style="text-align: center; font-size: 22px; margin-top: 60px; margin-bottom: 32px;">Процесс создания</h3>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <h4>Опрос</h4>
+                        <p>Диалог с родителем</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <h4>Диагностика</h4>
+                        <p>AI анализирует, выбирает стратегию</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <h4>Написание</h4>
+                        <p>Писатель создаёт сказку</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <h4>Доставка</h4>
+                        <p>EPUB или печать</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: #F0F7FF; border-radius: 12px;">
+                <h3 style="font-size: 24px; color: var(--color-text); margin-bottom: 16px;">Готовы начать?</h3>
+                <p style="font-size: 16px; color: var(--color-text-light); margin-bottom: 24px;">
+                    Напишите в Telegram, и мы расскажем вам всё подробнее.
+                </p>
+                <a href="https://t.me/drozdovhumandevelopment" target="_blank" class="cta-button" style="font-size: 16px; padding: 14px 32px;">📱 Написать в Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Каналы</h4>
+                    <a href="https://t.me/twai_skazki" target="_blank">Сказки</a>
+                    <a href="https://t.me/drozdovhumandevelopment" target="_blank">Заказы</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Читайте</h4>
+                    <a href="https://t.me/twai_skazki/54" target="_blank">О подарке</a>
+                    <a href="https://t.me/twai_skazki/57" target="_blank">О результатах</a>
+                    <a href="https://telegra.ph/Kak-sozdaetsya-personalnaya-terapevticheskaya-skazka-sintez-iskusstva-psihologii-i-sovremennyh-tehnologij-11-02" target="_blank">О процессе</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <a href="https://t.me/drozdovhumandevelopment" target="_blank">Telegram</a>
+                    <a href="https://t.me/twai_skazki" target="_blank">Канал</a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#what">Что это</a>
+                <a href="#who">Для кого</a>
+                <a href="#how">Как заказать</a>
+            </div>
+
+            <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p class="footer-copyright">
+                    © 2025 TaleWeaver AI. Персональные терапевтические сказки для детей.<br>
+                    Создано с любовью для развития и трансформации.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const element = document.querySelector(href);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Track analytics (optional - for your GitHub Pages)
+        if (window.location.hostname !== 'localhost') {
+            // You can add analytics tracking here
+        }
+    </script>
+</body>
+</html>
